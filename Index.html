@@ -56,6 +56,11 @@
     background-color: #30c41a;
   }
 
+  .down {
+    background-color: #960000;
+    color: #DDDDDD;
+  }
+
   .reset {
     background-color: #999999;
     color: #111111;
@@ -86,28 +91,36 @@
     <label for="Input_TeamName_Team1">Team 1 Name</label>
     <br>
     <input type="text" name="Input_TeamName_Team1" id="Input_TeamName_Team1">
-    
-    <section class="btn-row">
-      <button class="btn-score up" id="btnAdd1_Team1">+1</button>
-      <button class="btn-score up" id="btnAdd3_Team1">+3</button>
+
+    <section class="score-buttons">
+      <section class="btn-row">
+        <button class="btn-score up" id="btnAdd1_Team1">+1</button>
+        <button class="btn-score up" id="btnAdd3_Team1">+3</button>
+      </section>
+      <section class="btn-row">
+        <button class="btn-score down" id="btnSub1_Team1">-1</button>
+      </section>
     </section>
-    
-    <button class="btn-score reset" id="btnReset_Score_Team1">Reset Score</button>
   </section>
 
   <section class="team-info">
     <label for="Input_TeamName_Team2">Team 2 Name</label>
     <br>
     <input type="text" name="Input_TeamName_Team2" id="Input_TeamName_Team2">
-    
-    <section class="btn-row">
-      <button class="btn-score up" id="btnAdd1_Team2">+1</button>
-      <button class="btn-score up" id="btnAdd3_Team2">+3</button>
-    </section>
-    
-    <section>
-      <button class="btn-score reset" id="btnReset_Score_Team2">Reset Score</button>
-    </section>
+
+    <section class="score-buttons">
+      <section class="btn-row">
+        <button class="btn-score up" id="btnAdd1_Team2">+1</button>
+        <button class="btn-score up" id="btnAdd3_Team2">+3</button>
+      </section>
+      <section class="btn-row">
+        <button class="btn-score down" id="btnSub1_Team2">-1</button>
+      </section>
+    </section>    
+  </section>
+
+  <section>
+    <button class="btn-score reset" id="btnReset_Scores">Reset Scores</button>
   </section>
 
   <script>
@@ -126,8 +139,10 @@
     const btnAdd3_Team1 = document.getElementById('btnAdd3_Team1')
     const btnAdd3_Team2 = document.getElementById('btnAdd3_Team2')
 
-    const btnResetScore_Team1 = document.getElementById('btnReset_Score_Team1')
-    const btnResetScore_Team2 = document.getElementById('btnReset_Score_Team2')
+    const btnSub1_Team1 = document.getElementById('btnSub1_Team1')
+    const btnSub1_Team2 = document.getElementById('btnSub1_Team2')
+
+    const btnResetScores = document.getElementById('btnReset_Scores')
 
     let Score = {
       "One": 0,
@@ -166,19 +181,26 @@
       Score.One += 3
       spnScore_Team1.textContent = Score.One
     })
-
+    
     btnAdd3_Team2.addEventListener('click', function() {
       Score.Two += 3
       spnScore_Team2.textContent = Score.Two
     })
+    
+    btnSub1_Team1.addEventListener('click', function() {
+        Score.One--
+        spnScore_Team1.textContent = Score.One
+    })
 
-    btnResetScore_Team1.addEventListener('click', function() {
-      Score.One = 0
+    btnSub1_Team2.addEventListener('click', function() {
+        Score.Two--
+        spnScore_Team2.textContent = Score.Two
+    })
+
+    btnResetScores.addEventListener('click', function() {
+      Score.One = Score.Two = 0
+
       spnScore_Team1.textContent = Score.One
-    });
-
-    btnResetScore_Team2.addEventListener('click', function() {
-      Score.Two = 0
       spnScore_Team2.textContent = Score.Two
     });
 
