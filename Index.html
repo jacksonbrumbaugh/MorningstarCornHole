@@ -9,10 +9,11 @@
 <style>
   body {
     font-family: 'Lexend', 'Verdana', sans-serif;
+    text-align: center;
   }
 
   .score-board {
-    display: grid
+    display: grid;
   }
 
   .score-board_a {
@@ -33,6 +34,10 @@
   .score-board_d {
     grid-row: 2;
     grid-column: 2;
+  }
+
+  .team-info {
+    margin: 32px 0px;
   }
 
   .btn-row {
@@ -76,32 +81,32 @@
     </div>
   </section>
 
-  <h3>Team 1</h3>
-  <label for="TeamNameInput_Team1">Team Name:</label>
-  <input type="text" name="TeamNameInput_Team1">
-
-  <section class="btn-row">
-    <button class="btn-score up" id="btnAdd1_Team1">+1</button>
-    <button class="btn-score up" id="btnAdd3_Team1">+3</button>
+  <section class="team-info">
+    <label for="TeamNameInput_Team1">Team 1 Name</label>
+    <br>
+    <input type="text" name="TeamNameInput_Team1">
+    
+    <section class="btn-row">
+      <button class="btn-score up" id="btnAdd1_Team1">+1</button>
+      <button class="btn-score up" id="btnAdd3_Team1">+3</button>
+    </section>
+    
+    <button class="btn-score reset" id="btnReset_Score_Team1">Reset Score</button>
   </section>
 
-  <button class="btn-score reset" id="btnReset_Score_Team1">Reset Score</button>
-
-  <h3>Team 2</h3>
-  <label for="TeamNameInput_Team2">Team Name:</label>
-  <input type="text" name="TeamNameInput_Team2">
-
-  <section>
-    Score: <span id="Score_Team2">0</span>
-  </section>
-
-  <section class="btn-row">
-    <button class="btn-score up" id="btnAdd1_Team2">+1</button>
-    <button class="btn-score up" id="btnAdd3_Team2">+3</button>
-  </section>
-
-  <section>
-    <button class="btn-score reset" id="btnReset_Score_Team2">Reset Score</button>
+  <section class="team-info">
+    <label for="TeamNameInput_Team2">Team 2 Name</label>
+    <br>
+    <input type="text" name="TeamNameInput_Team2">
+    
+    <section class="btn-row">
+      <button class="btn-score up" id="btnAdd1_Team2">+1</button>
+      <button class="btn-score up" id="btnAdd3_Team2">+3</button>
+    </section>
+    
+    <section>
+      <button class="btn-score reset" id="btnReset_Score_Team2">Reset Score</button>
+    </section>
   </section>
 
   <script>
@@ -133,18 +138,12 @@
     })
 
     btnAdd3_Team1.addEventListener('click', function() {
-      for (let i = 0; i < 3; i++) {
-        Score.One++
-      }
-
+      Score.One += 3
       spnScore_Team1.textContent = Score.One
     })
 
     btnAdd3_Team2.addEventListener('click', function() {
-      for (let i = 0; i < 3; i++) {
-        Score.Two++
-      }
-
+      Score.Two += 3
       spnScore_Team2.textContent = Score.Two
     })
 
