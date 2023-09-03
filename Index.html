@@ -14,6 +14,7 @@
 
   .score-board {
     display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 
   .score-board_a {
@@ -67,14 +68,14 @@
 
   <section class="score-board">
     <div class="score-board_a">
-      Team 1
+      <span id="TeamName_Team1">Team 1</span>
     </div>
     <div class="score-board_c">
       <span id="Score_Team1">0</span>
     </div>
 
     <div class="score-board_b">
-      Team 2
+      <span id="TeamName_Team2">Team 2</span>
     </div>
     <div class="score-board_d">
       <span id="Score_Team2">0</span>
@@ -82,9 +83,9 @@
   </section>
 
   <section class="team-info">
-    <label for="TeamNameInput_Team1">Team 1 Name</label>
+    <label for="Input_TeamName_Team1">Team 1 Name</label>
     <br>
-    <input type="text" name="TeamNameInput_Team1">
+    <input type="text" name="Input_TeamName_Team1" id="Input_TeamName_Team1">
     
     <section class="btn-row">
       <button class="btn-score up" id="btnAdd1_Team1">+1</button>
@@ -95,9 +96,9 @@
   </section>
 
   <section class="team-info">
-    <label for="TeamNameInput_Team2">Team 2 Name</label>
+    <label for="Input_TeamName_Team2">Team 2 Name</label>
     <br>
-    <input type="text" name="TeamNameInput_Team2">
+    <input type="text" name="Input_TeamName_Team2" id="Input_TeamName_Team2">
     
     <section class="btn-row">
       <button class="btn-score up" id="btnAdd1_Team2">+1</button>
@@ -110,6 +111,12 @@
   </section>
 
   <script>
+    const spnName_Team1 = document.getElementById('TeamName_Team1')
+    const spnName_Team2 = document.getElementById('TeamName_Team2')
+
+    const inpName_Team1 = document.getElementById('Input_TeamName_Team1')
+    const inpName_Team2 = document.getElementById('Input_TeamName_Team2')
+
     const spnScore_Team1 = document.getElementById('Score_Team1')
     const spnScore_Team2 = document.getElementById('Score_Team2')
 
@@ -126,6 +133,24 @@
       "One": 0,
       "Two": 0
     }
+
+    inpName_Team1.addEventListener('change', function() {
+      let NewName = inpName_Team1.value
+      if ( NewName.length == 0 ) {
+        NewName = "Team 1"
+      }
+
+      spnName_Team1.textContent = NewName
+    })
+
+    inpName_Team2.addEventListener('change', function() {
+      let NewName = inpName_Team2.value
+      if ( NewName.length == 0 ) {
+        NewName = "Team 2"
+      }
+
+      spnName_Team2.textContent = NewName
+    })
 
     btnAdd1_Team1.addEventListener('click', function() {
         Score.One++
