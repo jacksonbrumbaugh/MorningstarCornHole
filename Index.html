@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Lexend' rel='stylesheet'>
+  <title>Morningstar Corn Hole</title>
+</head>
+<style>
+  body {
+    font-family: 'Lexend', 'Verdana', sans-serif;
+  }
+
+  .btn-row {
+    margin: 15px 0px;
+  }
+
+  .btn-score {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    font-size: 1.25rem;
+  }
+
+  .up {
+    background-color: #30c41a;
+  }
+
+  .reset {
+    background-color: #999999;
+    color: #111111;
+    font-size: 1rem;
+  }
+
+</style>
+<body>
+  <h1>Corn Hole Score</h1>
+
+  <h3>Team 1</h3>
+  <label for="TeamNameInput_Team1">Team Name:</label>
+  <input type="text" name="TeamNameInput_Team1">
+
+  <section>Score: <span id="Score_Team1">0</span></section>
+
+  <section class="btn-row">
+    <button class="btn-score up" id="btnAdd1_Team1">+1</button>
+    <button class="btn-score up" id="btnAdd3_Team1">+3</button>
+  </section>
+
+  <button class="btn-score reset" id="btnReset_Score_Team1">Reset Score</button>
+
+  <h3>Team 2</h3>
+  <label for="TeamNameInput_Team2">Team Name:</label>
+  <input type="text" name="TeamNameInput_Team2">
+
+  <section>
+    Score: <span id="Score_Team2">0</span>
+  </section>
+
+  <section class="btn-row">
+    <button class="btn-score up" id="btnAdd1_Team2">+1</button>
+    <button class="btn-score up" id="btnAdd3_Team2">+3</button>
+  </section>
+
+  <section>
+    <button class="btn-score reset" id="btnReset_Score_Team2">Reset Score</button>
+  </section>
+
+  <script>
+    const spnScore_Team1 = document.getElementById('Score_Team1')
+    const spnScore_Team2 = document.getElementById('Score_Team2')
+
+    const btnAdd1_Team1 = document.getElementById('btnAdd1_Team1')
+    const btnAdd1_Team2 = document.getElementById('btnAdd1_Team2')
+
+    const btnAdd3_Team1 = document.getElementById('btnAdd3_Team1')
+    const btnAdd3_Team2 = document.getElementById('btnAdd3_Team2')
+
+    const btnResetScore_Team1 = document.getElementById('btnReset_Score_Team1')
+    const btnResetScore_Team2 = document.getElementById('btnReset_Score_Team2')
+
+    let Score = {
+      "One": 0,
+      "Two": 0
+    }
+
+    btnAdd1_Team1.addEventListener('click', function() {
+        Score.One++
+        spnScore_Team1.textContent = Score.One
+    })
+
+    btnAdd1_Team2.addEventListener('click', function() {
+        Score.Two++
+        spnScore_Team2.textContent = Score.Two
+    })
+
+    btnAdd3_Team1.addEventListener('click', function() {
+      for (let i = 0; i < 3; i++) {
+        Score.One++
+      }
+
+      spnScore_Team1.textContent = Score.One
+    })
+
+    btnAdd3_Team2.addEventListener('click', function() {
+      for (let i = 0; i < 3; i++) {
+        Score.Two++
+      }
+
+      spnScore_Team2.textContent = Score.Two
+    })
+
+    btnResetScore_Team1.addEventListener('click', function() {
+      Score.One = 0
+      spnScore_Team1.textContent = Score.One
+    });
+
+    btnResetScore_Team2.addEventListener('click', function() {
+      Score.Two = 0
+      spnScore_Team2.textContent = Score.Two
+    });
+
+  </script>
+</body>
+</html>
